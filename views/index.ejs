@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<ul id="log"></ul>
+
+<script>
+    var identity = 'desktop';
+</script>
+
+<script src="/js/common.js"></script>
+
+<script>
+    socket.on('orient', function(data){
+        log(data);
+    });
+</script>
+
+</body>
+</html>
