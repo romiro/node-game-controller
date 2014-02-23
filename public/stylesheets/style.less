@@ -16,42 +16,45 @@
 }
 
 #box {
-  display:none;
 
   background: grey;
   width: 300px;
   height: 300px;
-  position: relative;
-//  .perspective(250px);
+  position: absolute;
+  top: 25%;
+  left: 25%;
 
 
-  .rotateX(20deg);
+  .rotate3d(45, 45, 0, 25deg);
 
   .transform-style(preserve-3d);
-//  .opacity(0.5);
-
 
   .side {
     position: absolute;
-//    .opacity(1);
+    top: 0px;
+    left: 0px;
     width: 300px;
     height: 300px;
-//    .backface-visibility(hidden);
+
     background-color: lightgray;
     border: 1px solid black;
+
+    font: 72px black;
+    text-align:center;
+    line-height:150px;
     &.one {
-      .rotateX(90deg);
-      .transform-origin(0 150px 150px);
-      top: -150px;
+//      .transform-origin(0 0 0);
+//      .rotateX(90deg);
+      .transform(rotateX(90deg) translateY(150px) translateZ(150px));
     }
     &.two {
-      display: none;
+      .transform(rotateY(90deg) translateX(-150px) translateZ(-150px));
     }
     &.three {
-      display: none;
+      .transform(rotateY(90deg) translateX(-150px) translateZ(150px));
     }
     &.four {
-      display: none;
+      .transform(rotateX(90deg) translateY(150px) translateZ(-150px));
     }
   }
 }
