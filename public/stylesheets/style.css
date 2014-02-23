@@ -1,1 +1,60 @@
-#log{list-style:none}#log li{list-style:none}
+#container {
+  width: 100%;
+  min-height: 100%;
+}
+#log {
+  list-style: none;
+  font-size: 12px;
+  height: 100%;
+  width: 600px;
+  overflow-y: auto;
+}
+#log li {
+  list-style: none;
+}
+#box {
+  display: none;
+  background: grey;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  -webkit-transform: rotateX(20deg);
+  -moz-transform: rotateX(20deg);
+  -o-transform: rotateX(20deg);
+  -ms-transform: rotateX(20deg);
+  transform: rotateX(20deg);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+#box .side {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: lightgray;
+  border: 1px solid black;
+}
+#box .side.one {
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  -o-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 0 150px 150px;
+  -moz-transform-origin: 0 150px 150px;
+  -o-transform-origin: 0 150px 150px;
+  -ms-transform-origin: 0 150px 150px;
+  transform-origin: 0 150px 150px;
+  top: -150px;
+}
+#box .side.two {
+  display: none;
+}
+#box .side.three {
+  display: none;
+}
+#box .side.four {
+  display: none;
+}

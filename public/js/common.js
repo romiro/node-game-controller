@@ -1,4 +1,8 @@
 
+if (typeof identity == 'undefined') {
+    identity = 'desktop';
+}
+
 var socket = io.connect('http://192.168.1.100:9090/');
 socket.on('identified', function(status){
     if (status) {

@@ -1,6 +1,57 @@
+@import "lesshat.less";
+
+#container {
+  width: 100%;
+  min-height:100%;
+}
 #log {
   list-style: none;
+  font-size: 12px;
+  height: 100%;
+  width: 600px;
+  overflow-y: auto;
   li {
     list-style: none;
+  }
+}
+
+#box {
+  display:none;
+
+  background: grey;
+  width: 300px;
+  height: 300px;
+  position: relative;
+//  .perspective(250px);
+
+
+  .rotateX(20deg);
+
+  .transform-style(preserve-3d);
+//  .opacity(0.5);
+
+
+  .side {
+    position: absolute;
+//    .opacity(1);
+    width: 300px;
+    height: 300px;
+//    .backface-visibility(hidden);
+    background-color: lightgray;
+    border: 1px solid black;
+    &.one {
+      .rotateX(90deg);
+      .transform-origin(0 150px 150px);
+      top: -150px;
+    }
+    &.two {
+      display: none;
+    }
+    &.three {
+      display: none;
+    }
+    &.four {
+      display: none;
+    }
   }
 }

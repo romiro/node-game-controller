@@ -25,8 +25,8 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('less-middleware')({
     src: path.join(__dirname, 'public'),
-    compress: true,
-    yuicompress: true,
+//    compress: true,
+//    yuicompress: true,
     force: app.get('env') == 'development'
 }));
 app.use(express.static(path.join(__dirname, 'public')));

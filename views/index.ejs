@@ -9,19 +9,27 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
+<div id="container">
 <ul id="log"></ul>
+
+<!--<div id="box">
+    <div class="side one"></div>
+    <div class="side two"></div>
+    <div class="side three"></div>
+    <div class="side four"></div>
+</div>-->
+
+<canvas id="gl" width="800" height="600">
+</canvas>
 
 <script>
     var identity = 'desktop';
 </script>
 
 <script src="/js/common.js"></script>
+<script src="/js/desktop.js"></script>
 
-<script>
-    socket.on('orient', function(data){
-        log(data);
-    });
-</script>
 
+</div>
 </body>
 </html>
