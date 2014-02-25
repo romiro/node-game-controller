@@ -1,3 +1,13 @@
+body.webgl {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  line-height: 0px;
+}
+body.webgl * {
+  padding: 0;
+  margin: 0;
+}
 #container {
   width: 100%;
   min-height: 100%;
@@ -19,11 +29,11 @@
   position: absolute;
   top: 25%;
   left: 25%;
-  -webkit-transform: rotate3d(45, 45, 0, 90deg);
-  -moz-transform: rotate3d(45, 45, 0, 90deg);
-  -o-transform: rotate3d(45, 45, 0, 90deg);
-  -ms-transform: rotate3d(45, 45, 0, 90deg);
-  transform: rotate3d(45, 45, 0, 90deg);
+  -webkit-transform: rotate3d(45, 45, 0, 25deg);
+  -moz-transform: rotate3d(45, 45, 0, 25deg);
+  -o-transform: rotate3d(45, 45, 0, 25deg);
+  -ms-transform: rotate3d(45, 45, 0, 25deg);
+  transform: rotate3d(45, 45, 0, 25deg);
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;

@@ -4,9 +4,13 @@
  */
 
 exports.index = exports.desktop = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('desktop');
 };
 
 exports.device = function(req, res){
     res.render('device');
+};
+
+exports.webgl = function(req, res){
+    res.render('webgl');
 };

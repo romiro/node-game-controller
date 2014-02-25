@@ -1,5 +1,17 @@
 @import "lesshat.less";
 
+body.webgl {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  line-height: 0px;
+  * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
 #container {
   width: 100%;
   min-height:100%;
@@ -14,6 +26,7 @@
     list-style: none;
   }
 }
+
 
 #box {
 
@@ -43,8 +56,6 @@
     text-align:center;
     line-height:150px;
     &.one {
-//      .transform-origin(0 0 0);
-//      .rotateX(90deg);
       .transform(rotateX(90deg) translateY(150px) translateZ(150px));
     }
     &.two {

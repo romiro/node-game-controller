@@ -37,7 +37,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.desktop);
+app.get('/desktop', routes.desktop);
 app.get('/m', routes.device);
+app.get('/webgl', routes.webgl);
 
 
 var server = http.createServer(app);
