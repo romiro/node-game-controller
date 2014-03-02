@@ -1,8 +1,14 @@
-socket.on('orient', function(data){
-    log(data);
-});
+
 
 (function(){
+    var orientEvent = document.createEvent('Event');
+    orientEvent.initEvent('orient');
+
+    socket.on('orient', function(data){
+        orientEvent.data = data;
+        document.dispatchEvent(orientEvent);
+    });
+
     var height = window.innerHeight;
     var width = window.innerWidth;
 
@@ -18,34 +24,28 @@ socket.on('orient', function(data){
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
-    camera.position.z = 15;
+    camera.position.z = 30;
 
+    //Lighting
     var ambient = new THREE.AmbientLight( 0x101010 );
     scene.add( ambient );
 
-    var directionalLight = new THREE.DirectionalLight( 0xff7777, 0.5 );
-    directionalLight.position.set( 1, 1, 2 ).normalize();
-    scene.add( directionalLight );
+    var directionalLight1 = new THREE.DirectionalLight( 0xffffff, 1 );
+    directionalLight1.position.set( 1, 2, 3 ).normalize();
+    scene.add( directionalLight1 );
 
-    var pointLight = new THREE.PointLight( 0xffaa00, 10 );
-    pointLight.position.set( 0, 0, 0 );
-    scene.add( pointLight );
+    var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.25 );
+    directionalLight2.position.set( -2, -2, -3 ).normalize();
+    scene.add( directionalLight2 );
 
-    var sphere = new THREE.SphereGeometry( 100, 16, 8, 1 );
-    var lightMesh = new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xffaa00 } ) );
-    lightMesh.scale.set( 0.5, 0.5, 0.5 );
-    lightMesh.position = pointLight.position;
-    scene.add( lightMesh );
-
-
-    var geometry = new THREE.CubeGeometry(10,10,10,20,20,20);
+    //The Box
+    var geometry = new THREE.CubeGeometry(30,10,10,20,20,20);
     var material = new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } );
-
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
 
-
+    //Init renderer and run
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
@@ -54,37 +54,38 @@ socket.on('orient', function(data){
     function render() {
         requestAnimationFrame(render);
 
-        camera.position.x += ( mouseX/10 - camera.position.x ) * .5;
-        camera.position.y += ( -mouseY/10 - camera.position.y ) * .5;
+//        camera.position.x += ( mouseX/10 - camera.position.x ) * .5;
+//        camera.position.y += ( -mouseY/10 - camera.position.y ) * .5;
 
         camera.lookAt( scene.position );
 
-        lightMesh.position.x = 200 * Math.cos( r );
-        lightMesh.position.z = 200 * Math.sin( r );
-        lightMesh.position.y = Math.sin(r*10) * 15;
+//        r += 0.05;
+//        if (parseInt(r*100) % 10 == 0) {
+//            console.log(mouseX, mouseY);
+//        }
 
-        r += 0.05;
-        if (parseInt(r*100) % 10 == 0) {
-            console.log(mouseX, mouseY);
-        }
-
-    //        cube.rotation.x += 0.01;
-    //        cube.rotation.y += 0.01;
+//            cube.rotation.x += 0.01;
+//            cube.rotation.y += 0.01;
         renderer.render(scene, camera);
     }
     render();
 
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-
-    function onDocumentMouseMove( event ) {
-
-        mouseX = ( event.clientX - windowHalfX );
-        mouseY = ( event.clientY - windowHalfY );
-//        console.log('X',event.clientX ,windowHalfX,mouseX);
-//        console.log('Y',event.clientY ,windowHalfY,mouseY);
+    document.addEventListener('orient', onOrient, false);
+    function onOrient(evt) {
+//        console.log('onOrient: ', evt.data);
+        cube.rotation.x = evt.data.beta * 0.01;
+        cube.rotation.z = evt.data.gamma * 0.01;
     }
 
+
+//    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+//    function onDocumentMouseMove( event ) {
+//        mouseX = ( event.clientX - windowHalfX );
+//        mouseY = ( event.clientY - windowHalfY );
+//    }
+
 })();
+
 window.addEventListener('load', function(event){
 
 });
